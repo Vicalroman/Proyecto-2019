@@ -8,11 +8,9 @@ def valInt(*args):
         try:
             if args[1][0] < args[1][1]:
                 if type(args[1]) is tuple and len(args[1]) is 2:
-                    interv = [i for i in range(args[1][0] + 1, args[1][1])]
-                    isInt = any([args[0] is i for i in interv])
+                    isInt = args[0] > args[1][0] and args[0] < args[1][1]
                 elif type(args[1]) is list and len(args[1]) is 2:
-                    interv = [i for i in range(args[1][0], args[1][1] + 1)]
-                    isInt = any([args[0] is i for i in interv])
+                    isInt = args[0] >= args[1][0] and args[0] <= args[1][1]
             else:
                 raise ValueError("El segundo argumento no esta ordenado de manera creciente.")
         except TypeError:
