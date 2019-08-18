@@ -63,6 +63,3 @@ def GaussJordan(a, b):
         for j in range(p):
             b[i][j] *= t
     return b
-a = [[2,1],[5,3]]
-b = [[1,0],[0,1]]
-print(GaussJordan(a,b))
