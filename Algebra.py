@@ -1,35 +1,29 @@
 def matrixProduct(a,b):
+    #DocString
+    if len(a[0]) == len(b):
+        row_1 = len(a) #Filas de a
+        row_2 = len(b) #Filas de b
+        column_1 = len(a[0]) #Columnas de a
+        column_2 = len(b[0]) #Columnas de b
+        product = []
+        for i in range(row_1):
+            aux_list = []
+            for j in range(column_2):
+                x = 0
+                for k in range(row_1):
+                    x = x + a[i][k] * b[k][j]
+                aux_list.append(x)
+            product.append(aux_list)
+    return product
+def matrixProduct_2(a,b):
     """DocString"""
-    try:
-        if len(a[0]) == len(b):
-            m_1 = len(a) #Filas de a
-            m_2 = len(b) #Filas de b
-            n_1 = len(a[0]) #Columnas de a
-            n_2 = len(b[0]) #Columnas de b
-            lista = []
-            for i in range(n_2):
-                lista_aux = []
-                for j in range(m_1):
-                    x = 0
-                    for k in range(n_1):
-                        x = x + a[i][k] * b[k][j]
-                    lista_aux.append(x)
-                lista.append(lista_aux)
-    except TypeError:
-        None
-    return lista
-def matrixProduct(a,b):
-    """DocString"""
-    try:
-        if len(a[0]) == len(b):
-            m_1 = len(a) #Filas de a
-            m_2 = len(b) #Filas de b
-            n_1 = len(a[0]) #Columnas de a
-            n_2 = len(b[0]) #Columnas de b
-            lista = [[sum([a[i][k] * b[k][j] for k in range(n_1)]) for j in range(m_1)]for i in range(n_2)]
-    except TypeError:
-        None
-    return lista
+    if len(a[0]) == len(b):
+        row_1 = len(a) #Filas de a
+        row_2 = len(b) #Filas de b
+        column_1 = len(a[0]) #Columnas de a
+        column_2 = len(b[0]) #Columnas de b
+        product = [[sum([a[i][k] * b[k][j] for k in range(row_1)]) for j in range(column_2)]for i in range(row_1)]
+    return product
 def gaussJordan(*args):
     """DocString"""
     if len(args) == 2 and type(args[1]) is int:
@@ -64,7 +58,7 @@ def gaussJordan(*args):
                         ident[i][j] *= t
         for i in range(fil):
             for j in range(fil):
-                matrix[j][i] = round(matrix[j][i] , 2)
+                ident[j][i] = round(ident[j][i] , 2)
         return ident
 def vectorProduct(a,b):
     vector_1 = [i for i in a]
@@ -95,3 +89,39 @@ def transposition_2(a):
     column = len(matr[0])
     trans = [[matr[j][i] for j in range(rows)] for i in range(column)]
     return trans
+def linealEquationsSol(a,b):
+    matr = [i for i in a]
+    matr_2 =[i for i in b]
+    inv_matr = gaussJordan(matr, len(matr))
+    result = matrixProduct_2(inv_matr, matr_2)
+    return result
+def determinant(*args):
+    if len(args) == 2 and type(args[1]) is int:
+        mat = [i for i in args[0]] #
+        ident = [[1 if i == j else 0 for i in range(args[1])] for j in range(args[1])]
+        fil = len(mat)
+        col = len(ident[0])
+        det = 1
+        for i in range(col - 1):
+                k = i
+                for j in range(i + 1, fil):
+                        if abs(mat[j][i]) > abs(mat[k][i]):
+                                k = j
+                if k != i:
+                        mat[i], mat[k] = mat[k] , mat[i]
+                        ident[i], ident[k] = ident[k], ident[i]
+                        det = -det
+                for j in range(i + 1, fil):
+                        t = mat[j][i]/mat[i][i]
+                        for k in range(i + 1, fil):
+                                mat[j][k] -= t*mat[i][k]
+                        for k in range(col):
+                                ident[j][k] -= t*ident[i][k]
+        for i in range(fil - 1, -1, -1):
+                for j in range(i + 1, fil):
+                        t = mat[i][j]
+                        for k in range(col):
+                                ident[i][k] -= t*ident[j][k]
+                det *= mat[i][i]
+    return det
+print(determinant([[1,2],[3,4]], 2))
