@@ -62,6 +62,9 @@ def gaussJordan(*args):
                 det *= mat[i][i]
                 for j in range(col):
                         ident[i][j] *= t
+        for i in range(fil):
+            for j in range(fil):
+                matrix[j][i] = round(matrix[j][i] , 2)
         return ident
 def vectorProduct(a,b):
     vector_1 = [i for i in a]
@@ -92,9 +95,3 @@ def transposition_2(a):
     column = len(matr[0])
     trans = [[matr[j][i] for j in range(rows)] for i in range(column)]
     return trans
-print(transposition_2([[1,2,3],[4,5,6]]))
-matrix = gaussJordan([[2,1],[5,3]], 2)
-for i in range(2):
-    for j in range(2):
-        matrix[j][i] = round(matrix[j][i] , 3)
-print(matrix)
