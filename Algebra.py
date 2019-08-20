@@ -1,5 +1,5 @@
 def matrixProduct(a,b):
-    #DocString
+    """DocString"""
     if len(a[0]) == len(b):
         row_1 = len(a) #Filas de a
         row_2 = len(b) #Filas de b
@@ -24,11 +24,11 @@ def matrixProduct_2(a,b):
         column_2 = len(b[0]) #Columnas de b
         product = [[sum([a[i][k] * b[k][j] for k in range(row_1)]) for j in range(column_2)]for i in range(row_1)]
     return product
-def gaussJordan(*args):
+def gaussJordan(a):
     """DocString"""
-    if len(args) == 2 and type(args[1]) is int:
-        mat = [i for i in args[0]] #
-        ident = [[1 if i == j else 0 for i in range(args[1])] for j in range(args[1])]
+    if len(a) == len(a[0]):
+        mat = [i for i in a] #
+        ident = [[1 if i == j else 0 for i in range(len(a))] for j in range(len(a))]
         fil = len(mat)
         col = len(ident[0])
         det = 1
@@ -61,6 +61,7 @@ def gaussJordan(*args):
                 ident[j][i] = round(ident[j][i] , 2)
         return ident
 def vectorProduct(a,b):
+    """DocString"""
     vector_1 = [i for i in a]
     vector_2 = [i for i in b]
     vector_r = []
@@ -73,6 +74,7 @@ def vectorProduct(a,b):
     vector_r = list(reversed(vector_r))
     return vector_r
 def transposition(a):
+    """DocString"""
     matr = [i for i in a]
     rows = len(matr)
     column = len(matr[0])
@@ -84,18 +86,21 @@ def transposition(a):
         trans.append(aux)
     return trans
 def transposition_2(a):
+    """DocString"""
     matr = [i for i in a]
     rows = len(matr)
     column = len(matr[0])
     trans = [[matr[j][i] for j in range(rows)] for i in range(column)]
     return trans
 def linealEquationsSol(a,b):
+    """DocString"""
     matr = [i for i in a]
     matr_2 =[i for i in b]
     inv_matr = gaussJordan(matr, len(matr))
     result = matrixProduct_2(inv_matr, matr_2)
     return result
 def determinant(*args):
+    """DocString"""
     if len(args) == 2 and type(args[1]) is int:
         mat = [i for i in args[0]] #
         ident = [[1 if i == j else 0 for i in range(args[1])] for j in range(args[1])]
@@ -124,4 +129,4 @@ def determinant(*args):
                                 ident[i][k] -= t*ident[j][k]
                 det *= mat[i][i]
     return det
-print(determinant([[1,2],[3,4]], 2))
+print(gaussJordan([[2,1],[5,3]]))
