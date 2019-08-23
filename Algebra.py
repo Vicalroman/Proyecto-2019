@@ -129,4 +129,3 @@ def determinant(*args):
                                 ident[i][k] -= t*ident[j][k]
                 det *= mat[i][i]
     return det
-print(gaussJordan([[2,1],[5,3]]))
