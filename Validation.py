@@ -95,18 +95,18 @@ def valComplex(*args):
 def valList(*args):
     """Ayuda en funcion valComplex en el modulo Validation:
 
-    funcion valList(objeto)
-    valList(Lista) -> Booleano True si el argumento corresponde con un tipo lista, caso contrario False.
-    valList(Lista, Lista, "value") -> Booleano True si el primer y el segundo argumento son tipo lista y
-    son totalmente equivalentes, en caso contrario retorna False.
-    valList(Lista, entero, "len") -> Booleano True si el primer argumento es tipo lista y el segundo es tipo
-    entero y ademas si la longitud de la lista coincide con el valor del numero entero, si no es el caso retorna False.
-
-    Retorna un booleano, en caso de 1 argumento, si este es tipo lista, retorna True en caso contrario retorna False,
-    en caso de 3 argumentos si el tercer argumento es 'value', el primer y segundo argumento son tipo lista, y son
-    iguales retorna True, en caso que no cumpla False, si el tercer argumento es 'len' el primero es tipo lista, el
-    segundo es un entero y la longitud de la lista coincide con el entero, retorna True, en caso de no cumplirse retorna,
-    False."""
+    |   funcion valList(objeto)
+    |   valList(Lista) -> Booleano True si el argumento corresponde con un tipo lista, caso contrario False.
+    |   valList(Lista, Lista, "value") -> Booleano True si el primer y el segundo argumento son tipo lista y
+    |   son totalmente equivalentes, en caso contrario retorna False.
+    |   valList(Lista, entero, "len") -> Booleano True si el primer argumento es tipo lista y el segundo es tipo
+    |   entero y ademas si la longitud de la lista coincide con el valor del numero entero, si no es el caso retorna False.
+    |   
+    |   Retorna un booleano, en caso de 1 argumento, si este es tipo lista, retorna True en caso contrario retorna False,
+    |   en caso de 3 argumentos si el tercer argumento es 'value', el primer y segundo argumento son tipo lista, y son
+    |   iguales retorna True, en caso que no cumpla False, si el tercer argumento es 'len' el primero es tipo lista, el
+    |   segundo es un entero y la longitud de la lista coincide con el entero, retorna True, en caso de no cumplirse retorna,
+    |   False."""
     isList = False
     if len(args) == 1:
         if type(args[0]) is list:
@@ -127,6 +127,4 @@ def valList(*args):
                 raise ValueError("El tercer argumento admite 2 entradas (len, value) y usted indico {}.".format(args[2]))
         except TypeError:
             raise TypeError("Introdujo un argumento invalido para la funcion.")
-
     return isList
-help(valComplex)
