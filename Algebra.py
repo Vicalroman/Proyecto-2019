@@ -129,7 +129,3 @@ def determinant(*args):
                                 ident[i][k] -= t*ident[j][k]
                 det *= mat[i][i]
     return det
-matrix_1 = [[2,-1,2],[1,1,1],[-1,4,1]]
-matrix_2 = [[4],[2],[3]]
-matrix_3 = [[3,1,2],[3,4,1],[2,6,1]]
-print(linealEquationsSol(matrix_1, matrix_2))
