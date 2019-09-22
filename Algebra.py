@@ -96,7 +96,7 @@ def linealEquationsSol(a,b):
     """DocString"""
     matr = [i for i in a]
     matr_2 =[i for i in b]
-    inv_matr = gaussJordan(matr, len(matr))
+    inv_matr = gaussJordan(matr )
     result = matrixProduct_2(inv_matr, matr_2)
     return result
 def determinant(*args):
@@ -129,3 +129,7 @@ def determinant(*args):
                                 ident[i][k] -= t*ident[j][k]
                 det *= mat[i][i]
     return det
+matrix_1 = [[2,-1,2],[1,1,1],[-1,4,1]]
+matrix_2 = [[4],[2],[3]]
+matrix_3 = [[3,1,2],[3,4,1],[2,6,1]]
+print(linealEquationsSol(matrix_1, matrix_2))
