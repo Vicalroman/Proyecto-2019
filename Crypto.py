@@ -1,5 +1,7 @@
 def caesarCipher(a):
-    """DocString"""
+    """Ka funcion caesarCipher recibe como argumento un dato tipo string, el cual
+    cifrara usando el codigo de cesar que consiste en desplazar las letras una cantidad
+    determinada de espacios en el abecedario, retorna el mensaje cifrado,"""
     a = list(a.lower())
     count = 0
     c = ""
@@ -21,7 +23,8 @@ def caesarCipher(a):
             c = c + " "
     return c
 def caesarDecipher(a):
-        """DocString"""
+        """La funcion caesarDecipher recibe 1 argumento de tipo string, ek cual
+        preferiblemente ya debe estar cifrado,la funcion decifra el mensaje y lo retorna como c"""
         a = list(a.lower())
         count = 0
         c = ""
@@ -42,10 +45,12 @@ def caesarDecipher(a):
             else:
                 c = c + " "
         return c
-print("Cifra un mensaje.")
-x = input("Escribe el mensaje a cifrar: \n")
-print(caesarCipher(x))
-
-print("Descifra un mensaje.")
-y = input("Escribe el mensaje para descifrar: \n")
-print(caesarDecipher(y))
+opcion = int(input("Elija una opcion:  \n1) Cifrar mensaje. \n2) Descifrar mensaje: \n "))
+if opcion == 1:
+    print("Cifra un mensaje.")
+    x = input("Escribe el mensaje a cifrar: \n")
+    print(caesarCipher(x))
+elif opcion == 2:
+    print("Descifra un mensaje.")
+    y = input("Escribe el mensaje para descifrar: \n")
+    print(caesarDecipher(y))
